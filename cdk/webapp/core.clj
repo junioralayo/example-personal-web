@@ -7,18 +7,18 @@
 
 (def app (App))
 
-(def stack (Stack app "x-web-client"))
+(def stack (Stack app "example-web-client"))
 
 (def bucket
   (Bucket stack
-          "x-web-bucket"
+          "example-web-bucket"
           {:publicReadAccess true
            :websiteIndexDocument "index.html"
            }))
 
 (def deployment
   (BucketDeployment stack
-                    "x-deployment"
+                    "example-deployment"
                     {:sources [(Source/asset "dist/")]
                      :destinationBucket bucket
                      }))
