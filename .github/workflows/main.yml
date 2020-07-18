@@ -19,7 +19,6 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-jdk8-${{ hashFiles('deps.edn') }}
-      - run: clojure -A:cdk:synth
       - name: Assume Role
         uses: youyo/awscredswrap@master
         with:
@@ -30,6 +29,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-east-1'
+      - name: CDK synth
+        uses: youyo/aws-cdk-github-actions@v1
+        with:
+          cdk_subcommand: 'synth'
       - name: CDK deploy
         uses: youyo/aws-cdk-github-actions@v1
         with:
