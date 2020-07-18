@@ -1,3 +1,1 @@
-{
-  "app": "example-web-client"
-}
+{"app":"clojure -A:cdk:synth"}
