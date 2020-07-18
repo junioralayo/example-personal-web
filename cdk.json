@@ -1,0 +1,2 @@
+
+{"app":"clojure -A:cdk:synth"}
