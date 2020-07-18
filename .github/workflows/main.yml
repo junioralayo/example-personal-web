@@ -15,6 +15,10 @@ jobs:
       - uses: DeLaGuardo/setup-clojure@2.0
         with:
           tools-deps: '1.10.1.469'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-jdk8-${{ hashFiles('deps.edn') }}
       - run: clojure -A:cdk:synth
       - name: Assume Role
         uses: youyo/awscredswrap@master
